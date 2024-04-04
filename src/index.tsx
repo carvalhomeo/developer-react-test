@@ -5,18 +5,21 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { darkTheme } from "./theme";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={darkTheme}>
-      <main>
-        <CssBaseline />
-        <App />
-      </main>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={darkTheme}>
+        <main>
+          <CssBaseline />
+          <App />
+        </main>
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

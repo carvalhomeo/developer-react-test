@@ -1,45 +1,13 @@
-import React from "react";
-import {
-  Box,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
 import { HeatmapProps } from "./Heatmap.props";
+import HeatmapChart from "../../components/HeatmapChart";
+import { mapData } from "../../utils";
 
-export const HighchartsWidget = (props: HeatmapProps) => {
-  const { tableData, tableHeaders } = props;
-
-  const showColHeader = (item: string) => {
-    return <TableCell>{item}</TableCell>;
-  };
-
-  const showColHeaders = () => {
-    return (
-      <TableRow>{tableHeaders.map((header) => showColHeader(header))}</TableRow>
-    );
-  };
-
-  const showRowItem = (item: Array<string | number>) => {
-    return item.map((x) => <TableCell>{x}</TableCell>);
-  };
-
-  const showRowData = () => {
-    return tableData.map((x) => <TableRow>{showRowItem(x)}</TableRow>);
-  };
+export const HighchartsWidget = ({tableData, tableHeaders}: HeatmapProps) => {
+  const columns = tableHeaders.slice(1)
+  const rows = tableData.map(data => data[0] as string)
+  const data = mapData(columns, rows, tableData)
 
   return (
-    <Box>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>{showColHeaders()}</TableHead>
-          <TableBody>{showRowData()}</TableBody>
-        </Table>
-      </TableContainer>
-    </Box>
+      <HeatmapChart columns={columns} rows={rows} data={data} />
   );
 };

@@ -1,3 +1,14 @@
+## Developer notes
+
+### Run tests
+```npm run test```
+
+### To improve
+1. Issue testing HotTable from handsontable
+2. Clicking the Developer Assessment link in the AppBar seems to be refreshing the page
+3. Improve the heatmaps colors
+4. Add cypress/playwright for e2e tests
+
 ## Developer Skills Assessment
 
 1. Install Node

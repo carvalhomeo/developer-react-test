@@ -1,45 +1,10 @@
-import React from "react";
-import {
-  Box,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
 import { HeatmapProps } from "./Heatmap.props";
+import Hottable from "../../components/Hottable";
 
-export const HandsontableWidget = (props: HeatmapProps) => {
-  const { tableData, tableHeaders } = props;
-
-  const showColHeader = (item: string) => {
-    return <TableCell>{item}</TableCell>;
-  };
-
-  const showColHeaders = () => {
-    return (
-      <TableRow>{tableHeaders.map((header) => showColHeader(header))}</TableRow>
-    );
-  };
-
-  const showRowItem = (item: Array<string | number>) => {
-    return item.map((x) => <TableCell>{x}</TableCell>);
-  };
-
-  const showRowData = () => {
-    return tableData.map((x) => <TableRow>{showRowItem(x)}</TableRow>);
-  };
-
+export const HandsontableWidget = ({tableData, tableHeaders}: HeatmapProps) => {
+  const data = [tableHeaders, ...tableData]
+  
   return (
-    <Box>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>{showColHeaders()}</TableHead>
-          <TableBody>{showRowData()}</TableBody>
-        </Table>
-      </TableContainer>
-    </Box>
+      <Hottable data={data}/>
   );
 };
